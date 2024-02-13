@@ -70,7 +70,7 @@ def getPhoneSpecs(phoneSpecsUlTag):
         specs += singlespec
     return specs
 
-def isPhoneInfoinDict(phoneInfoDict, phoneInfoListDict): # ERROR here
+def isPhoneInfoinDict(phoneInfoDict, phoneInfoListDict):
     return any(phoneInfoDict.items() <= d.items() for d in phoneInfoListDict)
 
 def isStorage128GB(tag):
@@ -98,7 +98,7 @@ def createDataframe(phoneName, phoneColor, phoneStorage, phonePrice, phoneStarRa
             })               
     dataframe = dataframe._append(phoneInfoDict, ignore_index = True)
 
-    if not isPhoneInfoinDict(phoneInfoDict, phoneInfoListDict): # ERROR
+    if not isPhoneInfoinDict(phoneInfoDict, phoneInfoListDict):
         # print(phoneName + " ==> " + phoneColor + " ==> " + phonePrice + " ==> "+ phoneRating + " ==> "+ phoneReview + " ==> "+ phoneStarRating + " ★" + " ==> " + phoneStorage)
         phoneInfoListDict.append(phoneInfoDict)
     
@@ -200,7 +200,7 @@ for file in os.listdir('html-flipkart'):
                     df_15_ProMax_1TB = createDataframe(phoneName, phoneColor, phoneStorage, phonePrice, phoneStarRating, phoneRating, phoneReview, phoneSpecs, df_15_ProMax_1TB)
 
 
-with pd.ExcelWriter('data/flipkart.xlsx') as writer:
+with pd.ExcelWriter(f"data/{platform}.xlsx") as writer:
     createExcelEntry(df_15_128GB, writer, getVarName(df_15_128GB))
     createExcelEntry(df_15_256GB, writer, getVarName(df_15_256GB))
     createExcelEntry(df_15_512GB, writer, getVarName(df_15_512GB))

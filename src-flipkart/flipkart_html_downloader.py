@@ -23,5 +23,5 @@ for page in tqdm(range(1,5), desc='Downloading content'):
     response = requests.get(scraperUrl, params=payload)
     soup = BeautifulSoup(response.content, 'html.parser')
 
-    with open(f"html/{platform}-{page}.html", 'w') as fp:
+    with open(f"html-flipkart/{platform}-{page}.html", 'w') as fp:
         fp.write(soup.prettify())
