@@ -1,3 +1,7 @@
 venv/
 .env
-# html/
+
+html*/
+*temp*
+
+.vscode
